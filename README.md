@@ -15,6 +15,8 @@ Highlights NSIS commands in Mozilla Firefox or Google Chrome. The following webs
 2. Download `NSIS-Linker.user.js`
 3. Drag the downloaded file to your Firefox window or open the Add-ons window (`Ctrl+Shift+A` on Windows and Linux, `⇧⌘A` on OS X) and add the file
 
+GreaseMonkey will automatically perform an upgrade once a new version is available!
+
 ### Chrome
 
 1. Open the extensions window from the tool menu
