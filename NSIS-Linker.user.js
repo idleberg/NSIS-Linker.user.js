@@ -5,8 +5,8 @@
 // @namespace     http://nsis.sf.net/GreaseMonkey_UserScript
 // @description   Links NSIS commands found on certain webpages to the scripting reference
 // @downloadURL   https://github.com/idleberg/NSIS-Linker.user.js/raw/master/NSIS-Linker.user.js
-// @match         *://bitbucket.org/.nsh*
-// @match         *://bitbucket.org/.nsi*
+// @match         *://bitbucket.org/*.nsh*
+// @match         *://bitbucket.org/*.nsi*
 // @match         *://forums.winamp.com/*
 // @match         *://github.com/*.nsh
 // @match         *://github.com/*.nsi
