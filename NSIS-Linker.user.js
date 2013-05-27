@@ -1,14 +1,18 @@
 // ==UserScript==
 // @name          NSIS-Linker.user.js
-// @version       0.2.1
+// @version       0.2.2
 // @date          2013-05-27
 // @namespace     http://nsis.sf.net/GreaseMonkey_UserScript
 // @description   Links NSIS commands found on certain webpages to the scripting reference
 // @downloadURL   https://github.com/idleberg/NSIS-Linker.user.js/raw/master/NSIS-Linker.user.js
+// @match         *://bitbucket.org/.nsh*
+// @match         *://bitbucket.org/.nsi*
 // @match         *://forums.winamp.com/*
-// @match         *://nsis.sourceforge.net/*
+// @match         *://github.com/*.nsh
+// @match         *://github.com/*.nsi
 // @match         *://nsis.sf.net/*
-// @matches       *://stackoverflow.com/*
+// @match         *://nsis.sourceforge.net/*
+// @match         *://stackoverflow.com/*
 // ==/UserScript==
 
 /*
