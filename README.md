@@ -1,7 +1,7 @@
 # NSIS-Linker.user.js
 *by Jan T. Sott*
 
-Highlights NSIS commands on the following websites
+Highlights NSIS commands in Mozilla Firefox or Google Chrome. The following websites are supported:
 
 * Winamp.com forums
 * NSIS Sourceforge pages
