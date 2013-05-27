@@ -5,13 +5,13 @@ Highlights NSIS commands in Mozilla Firefox or Google Chrome. The following webs
 
 * Winamp.com forums
 * NSIS Sourceforge pages
-* Stackoverflow
+* Stack Overflow
 
 ## Installation
 
 ### Firefox
 
-Make sure you got the [GreaseMonkey](https://addons.mozilla.org/en-US/firefox/addon/greasemonkey/) extension installed. Downlo
+Make sure you got the [GreaseMonkey](https://addons.mozilla.org/en-US/firefox/addon/greasemonkey/) extension installed.
 
 1. Make sure you already have the [GreaseMonkey](https://addons.mozilla.org/en-US/firefox/addon/greasemonkey/) add-on installed
 2. Download `NSIS-Linker.user.js`
