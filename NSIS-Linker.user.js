@@ -1,26 +1,22 @@
 // ==UserScript==
-// @name         NSIS-Linker.user.js
-// @author       Jan T. Sott
-// @namespace    http://nsis.sf.net/GreaseMonkey_UserScript
-// @version      0.2
-// @date         2013-05-27
-// @description  Links NSIS commands found on certain webpages to the scripting reference
-// @include      http://forums.winamp.com/*
-// @include      https://forums.winamp.com/*
-// @include      http://nsis.sourceforge.net/*
-// @include      https://nsis.sourceforge.net/*
-// @include      http://nsis.sf.net/*
-// @include      https://nsis.sf.net/*
-// @include      https://nsis.sf.net/*
-// @include      http://stackoverflow.com/*
+// @name          NSIS-Linker.user.js
+// @version       0.2.1
+// @date          2013-05-27
+// @namespace     http://nsis.sf.net/GreaseMonkey_UserScript
+// @description   Links NSIS commands found on certain webpages to the scripting reference
+// @downloadURL   https://github.com/idleberg/NSIS-Linker.user.js/raw/master/NSIS-Linker.user.js
+// @match         *://forums.winamp.com/*
+// @match         *://nsis.sourceforge.net/*
+// @match         *://nsis.sf.net/*
+// @matches       *://stackoverflow.com/*
 // ==/UserScript==
 
 /*
 
-  Author:        Jesse Ruderman (original AutoLink script) - http://www.squarefree.com/
-                 Jan T. Sott (NSIS Linker script) - http://whyeye.org
+  Author:         Jesse Ruderman (original AutoLink script) - http://www.squarefree.com/
+                  Jan T. Sott (NSIS Linker script) - http://whyeye.org
       
-  License:       MPL, GPL, LGPL
+  License:        MPL, GPL, LGPL
 
 */
 
@@ -44,7 +40,7 @@ const filters = [
   },
   {
     name: "NSIS Wiki",
-    regexp: /\binclude\b|\baddincludedir\b|\baddplugindir\b|\bappendfile\b|\bcd\b|\bdelfile\b|\becho\b|\berror\b|\bexecute\b|\bpackhdr\b|\bfinalize\b|\bgetdllversionsystem\b|\btempfile\b|\bwarning\b|\bverbose\b|\bdefine\b|\bundef\b|\binsertmacro\b|\bmacro\b|\bmacroend\b|\bsearchparse\b|\bsearchreplace\b|\b!ifdef\b|\bifndef\b|\bif\b|\bifmacrodef\b|\bifmacrondef\b|\belse\b|\bendif\b/g,
+    regexp: /\binclude\b|\baddincludedir\b|\baddplugindir\b|\bappendfile\b|\bcd\b|\bdelfile\b|\becho\b|\berror\b|\bexecute\b|\bpackhdr\b|\bfinalize\b|\bgetdllversionsystem\b|\btempfile\b|\bwarning\b|\bverbose\b|\bdefine\b|\bundef\b|\binsertmacro\b|\bmacro\b|\bmacroend\b|\bsearchparse\b|\bsearchreplace\b|\bifdef\b|\bifndef\b|\bif\b|\bifmacrodef\b|\bifmacrondef\b|\belse\b|\bendif\b/g,
     href: function(match) { return docs_url + "!" + match; }
   },
 ];
