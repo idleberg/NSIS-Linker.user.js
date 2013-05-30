@@ -21,3 +21,8 @@ GreaseMonkey will automatically perform an upgrade once a new version is availab
 
 1. Open the extensions window from the tool menu
 2. Drag `NSIS-Linker.user.js` to the window
+
+## Credits
+
+Original AutoLink script by [Jesse Ruderman](http://www.squarefree.com)
+NSIS modification by [Jan T. Sott](http://whyeye.org)
