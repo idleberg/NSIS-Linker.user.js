@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name          NSIS-Linker.user.js
-// @version       0.2.2
-// @date          2013-05-27
+// @version       0.2.3
+// @date          2013-05-30
 // @namespace     http://nsis.sf.net/GreaseMonkey_UserScript
 // @description   Links NSIS commands found on certain webpages to the scripting reference
 // @downloadURL   https://github.com/idleberg/NSIS-Linker.user.js/raw/master/NSIS-Linker.user.js
@@ -32,20 +32,26 @@ const timeBefore = new Date();
 var docs_url = "http://nsis.sourceforge.net/Reference/"
 
 const filters = [
-  {
-    name: "NSIS Wiki",
-    regexp: /\bAbort\b|\bAddBrandingImage\b|\bAddSize\b|\bAllowRootDirInstall\b|\bAllowSkipFiles\b|\bAutoCloseWindow\b|\bBGFont\b|\bBGGradient\b|\bBrandingText\b|\bBringToFront\b|\bCall\b|\bCallInstDLL\b|\bCaption\b|\bChangeUI\b|\bCheckBitmap\b|\bClearErrors\b|\bCompletedText\b|\bComponentText\b|\bCopyFiles\b|\bCRCCheck\b|\bCreateDirectory\b|\bCreateFont\b|\bCreateShortCut\b|\bDelete\b|\bDeleteINISec\b|\bDeleteINIStr\b|\bDeleteRegKey\b|\bDeleteRegValue\b|\bDetailPrint\b|\bDetailsButtonText\b|\bDirText\b|\bDirVar\b|\bDirVerify\b|\bEnableWindow\b|\bEnumRegKey\b|\bEnumRegValue\b|\bExch\b|\bExec\b|\bExecShell\b|\bExecWait\b|\bExpandEnvStrings\b|\bFile\b|\bFileBufSize\b|\bFileClose\b|\bFileErrorText\b|\bFileOpen\b|\bFileRead\b|\bFileReadByte\b|\bFileReadUTF16LE\b|\bFileReadWord\b|\bFileWriteUTF16LE\b|\bFileSeek\b|\bFileWrite\b|\bFileWriteByte\b|\bFileWriteWord\b|\bFindClose\b|\bFindFirst\b|\bFindNext\b|\bFindWindow\b|\bFlushINI\b|\bGetCurInstType\b|\bGetCurrentAddress\b|\bGetDlgItem\b|\bGetDLLVersion\b|\bGetDLLVersionLocal\b|\bGetErrorLevel\b|\bGetFileTime\b|\bGetFileTimeLocal\b|\bGetFullPathName\b|\bGetFunctionAddress\b|\bGetInstDirError\b|\bGetLabelAddress\b|\bGetTempFileName\b|\bGoto\b|\bHideWindow\b|\bIcon\b|\bIfAbort\b|\bIfErrors\b|\bIfFileExists\b|\bIfRebootFlag\b|\bIfSilent\b|\bInitPluginsDir\b|\bInstallButtonText\b|\bInstallColors\b|\bInstallDir\b|\bInstallDirRegKey\b|\bInstProgressFlags\b|\bInstType\b|\bInstTypeGetText\b|\bInstTypeSetText\b|\bIntCmp\b|\bIntCmpU\b|\bIntFmt\b|\bIntOp\b|\bIsWindow\b|\bLangString\b|\bLicenseBkColor\b|\bLicenseData\b|\bLicenseForceSelection\b|\bLicenseLangString\b|\bLicenseText\b|\bLoadLanguageFile\b|\bLockWindow\b|\bLogSet\b|\bLogText\b|\bManifestDPIAware\b|\bManifestSupportedOS\b|\bMessageBox\b|\bMiscButtonText\b|\bName\b|\bNop\b|\bOutFile\b|\bPage\b|\bPageCallbacks\b|\bPop\b|\bPush\b|\bQuit\b|\bReadEnvStr\b|\bReadINIStr\b|\bReadRegDWORD\b|\bReadRegStr\b|\bReboot\b|\bRegDLL\b|\bRename\b|\bRequestExecutionLevel\b|\bReserveFile\b|\bReturn\b|\bRMDir\b|\bSearchPath\b|\bSectionGetFlags\b|\bSectionGetInstTypes\b|\bSectionGetSize\b|\bSectionGetText\b|\bSectionIn\b|\bSectionSetFlags\b|\bSectionSetInstTypes\b|\bSectionSetSize\b|\bSectionSetText\b|\bSendMessage\b|\bSetAutoClose\b|\bSetBrandingImage\b|\bSetCompress\b|\bSetCompressor\b|\bSetCompressorDictSize\b|\bSetCtlColors\b|\bSetCurInstType\b|\bSetDatablockOptimize\b|\bSetDateSave\b|\bSetDetailsPrint\b|\bSetDetailsView\b|\bSetErrorLevel\b|\bSetErrors\b|\bSetFileAttributes\b|\bSetFont\b|\bSetOutPath\b|\bSetOverwrite\b|\bSetPluginUnload\b|\bSetRebootFlag\b|\bSetRegView\b|\bSetShellVarContext\b|\bSetSilent\b|\bShowInstDetails\b|\bShowUninstDetails\b|\bShowWindow\b|\bSilentInstall\b|\bSilentUnInstall\b|\bSleep\b|\bSpaceTexts\b|\bStrCmp\b|\bStrCmpS\b|\bStrCpy\b|\bStrLen\b|\bSubCaption\b|\bUnicode\b|\bUninstallButtonText\b|\bUninstallCaption\b|\bUninstallIcon\b|\bUninstallSubCaption\b|\bUninstallText\b|\bUninstPage\b|\bUnRegDLL\b|\bVar\b|\bVIAddVersionKey\b|\bVIFileVersion\b|\bVIProductVersion\b|\bWindowIcon\b|\bWriteINIStr\b|\bWriteRegBin\b|\bWriteRegDWORD\b|\bWriteRegExpandStr\b|\bWriteRegStr\b|\bWriteUninstaller\b|\bXPStyle\b|\bPage\b|\bUninstPage\b>/g,
-    href: function(match) { return docs_url + match; }
+  
+  { // Compiler Commands
+    name: "NSIS Scripting Reference",
+    regexp: /(?:\b)?\!(addincludedir|addplugindir|appendfile|cd|define|delfile|echo|else|endif|error|execute|finalize|getdllversionsystem|if|ifdef|ifmacrodef|ifmacrondef|ifndef|include|insertmacro|macro|macroend|packhdr|searchparse|searchreplace|tempfile|undef|verbose|warning)\b/g,
+    href: function(match) { return docs_url + match[0]; }
   },
-  {
+  {  // NSIS Plugins
     name: "NSIS Wiki",
-    regexp: /\bSectionGroupEnd\b|\bSectionGroup\b|\bFunctionEnd\b|\bFunction\b|\bSectionEnd\b|\bSection\b|\bSubSectionEnd\b|\bSubSection\b|\bPageExEnd\b|\bPageEx\b/g,
-    href: function(match) { return docs_url + match; }
+    regexp: /\b([a-zA-Z0-9_]+)::([a-zA-Z0-9_]+)\b/g,
+    href: function(match) { return "http://nsis.sourceforge.net/mediawiki/index.php?title=Special:Search&search=" + match[1] + "+plugin"; }
   },
-  {
-    name: "NSIS Wiki",
-    regexp: /\binclude\b|\baddincludedir\b|\baddplugindir\b|\bappendfile\b|\bcd\b|\bdelfile\b|\becho\b|\berror\b|\bexecute\b|\bpackhdr\b|\bfinalize\b|\bgetdllversionsystem\b|\btempfile\b|\bwarning\b|\bverbose\b|\bdefine\b|\bundef\b|\binsertmacro\b|\bmacro\b|\bmacroend\b|\bsearchparse\b|\bsearchreplace\b|\bifdef\b|\bifndef\b|\bif\b|\bifmacrodef\b|\bifmacrondef\b|\belse\b|\bendif\b/g,
-    href: function(match) { return docs_url + "!" + match; }
+  { // NSIS Commands
+    name: "NSIS Scripting Reference",
+    regexp: /\b(Abort|AddBrandingImage|AddSize|AllowRootDirInstall|AllowSkipFiles|AutoCloseWindow|BGFont|BGGradient|BrandingText|BringToFront|Call|CallInstDLL|Caption|ChangeUI|CheckBitmap|ClearErrors|CompletedText|ComponentText|CopyFiles|CRCCheck|CreateDirectory|CreateFont|CreateShortCut|Delete|DeleteINISec|DeleteINIStr|DeleteRegKey|DeleteRegValue|DetailPrint|DetailsButtonText|DirText|DirVar|DirVerify|EnableWindow|EnumRegKey|EnumRegValue|Exch|Exec|ExecShell|ExecWait|ExpandEnvStrings|File|FileBufSize|FileClose|FileErrorText|FileOpen|FileRead|FileReadByte|FileReadUTF16LE|FileReadWord|FileSeek|FileWrite|FileWriteByte|FileWriteUTF16LE|FileWriteWord|FindClose|FindFirst|FindNext|FindWindow|FlushINI|GetCurInstType|GetCurrentAddress|GetDlgItem|GetDLLVersion|GetDLLVersionLocal|GetErrorLevel|GetFileTime|GetFileTimeLocal|GetFullPathName|GetFunctionAddress|GetInstDirError|GetLabelAddress|GetTempFileName|Goto|HideWindow|Icon|IfAbort|IfErrors|IfFileExists|IfRebootFlag|IfSilent|InitPluginsDir|InstallButtonText|InstallColors|InstallDir|InstallDirRegKey|InstProgressFlags|InstType|InstTypeGetText|InstTypeSetText|IntCmp|IntCmpU|IntFmt|IntOp|IsWindow|LangString|LicenseBkColor|LicenseData|LicenseForceSelection|LicenseLangString|LicenseText|LoadLanguageFile|LockWindow|LogSet|LogText|ManifestDPIAware|ManifestSupportedOS|MessageBox|MiscButtonText|Name|Nop|OutFile|Page|Page|PageCallbacks|Pop|Push|Quit|ReadEnvStr|ReadINIStr|ReadRegDWORD|ReadRegStr|Reboot|RegDLL|Rename|RequestExecutionLevel|ReserveFile|Return|RMDir|SearchPath|SectionGetFlags|SectionGetInstTypes|SectionGetSize|SectionGetText|SectionIn|SectionSetFlags|SectionSetInstTypes|SectionSetSize|SectionSetText|SendMessage|SetAutoClose|SetBrandingImage|SetCompress|SetCompressor|SetCompressorDictSize|SetCtlColors|SetCurInstType|SetDatablockOptimize|SetDateSave|SetDetailsPrint|SetDetailsView|SetErrorLevel|SetErrors|SetFileAttributes|SetFont|SetOutPath|SetOverwrite|SetPluginUnload|SetRebootFlag|SetRegView|SetShellVarContext|SetSilent|ShowInstDetails|ShowUninstDetails|ShowWindow|SilentInstall|SilentUnInstall|Sleep|SpaceTexts|StrCmp|StrCmpS|StrCpy|StrLen|SubCaption|Unicode|UninstallButtonText|UninstallCaption|UninstallIcon|UninstallSubCaption|UninstallText|UninstPage|UninstPage|UnRegDLL|Var|VIAddVersionKey|VIFileVersion|VIProductVersion|WindowIcon|WriteINIStr|WriteRegBin|WriteRegDWORD|WriteRegExpandStr|WriteRegStr|WriteUninstaller|XPStyle)\b/g,
+    href: function(match) { return docs_url + match[1]; }
+  },
+  { // NSIS Sections & Functions
+    name: "NSIS Scripting Reference",
+    regexp: /\b(SectionGroupEnd|SectionGroup|FunctionEnd|Function|SectionEnd|Section|SubSectionEnd|SubSection|PageExEnd|PageEx)\b/g,
+    href: function(match) { return docs_url + match[1]; }
   },
 ];
 
@@ -289,7 +295,7 @@ function runFiltersOnTextNode(node)
   
           a = document.createElement("a");
           a.href = href;
-          a.title = "Look up on " + filter.name;
+          a.title = "Look up " + filter.name;
           a.className = "autolink autolink-" + filter.classNamePart;
   
           styleLink(a, filter);
