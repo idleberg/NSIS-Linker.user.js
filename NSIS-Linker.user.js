@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name          NSIS-Linker.user.js
-// @version       0.2.3
+// @version       0.2.4
 // @date          2013-05-30
 // @namespace     http://nsis.sf.net/GreaseMonkey_UserScript
 // @description   Links NSIS commands found on certain webpages to the scripting reference
@@ -35,7 +35,7 @@ const filters = [
   
   { // Compiler Commands
     name: "NSIS Scripting Reference",
-    regexp: /(?:\b)?\!(addincludedir|addplugindir|appendfile|cd|define|delfile|echo|else|endif|error|execute|finalize|getdllversionsystem|if|ifdef|ifmacrodef|ifmacrondef|ifndef|include|insertmacro|macro|macroend|packhdr|searchparse|searchreplace|tempfile|undef|verbose|warning)\b/g,
+    regexp: /(?:\b)?\!(addincludedir|addplugindir|appendfile|cd|define|delfile|echo|else|endif|error|execute|finalize|getdllversionsystem|ifdef|ifmacrodef|ifmacrondef|ifndef|if|include|insertmacro|macroend|macro|packhdr|searchparse|searchreplace|tempfile|undef|verbose|warning|)\b/g,
     href: function(match) { return docs_url + match[0]; }
   },
   {  // NSIS Plugins
