@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name          NSIS-Linker.user.js
-// @version       0.2.4
-// @date          2013-05-30
+// @version       0.2.5
+// @date          2013-06-08
 // @namespace     http://nsis.sf.net/GreaseMonkey_UserScript
 // @description   Links NSIS commands found on certain webpages to the scripting reference
 // @downloadURL   https://github.com/idleberg/NSIS-Linker.user.js/raw/master/NSIS-Linker.user.js
@@ -29,7 +29,7 @@ const timeBefore = new Date();
 
 // FILTERS
 
-var docs_url = "http://nsis.sourceforge.net/Reference/"
+var docs_url = "https://github.com/NSIS-Handbook/Documentation/blob/master/Reference/"
 
 const filters = [
   
