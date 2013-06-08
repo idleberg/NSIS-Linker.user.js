@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name          NSIS-Linker.user.js
-// @version       0.2.5
+// @version       0.2.6
 // @date          2013-06-08
-// @namespace     http://nsis.sf.net/GreaseMonkey_UserScript
+// @namespace     https://github.com/idleberg/NSIS-Linker.user.js/
 // @description   Links NSIS commands found on certain webpages to the scripting reference
 // @downloadURL   https://github.com/idleberg/NSIS-Linker.user.js/raw/master/NSIS-Linker.user.js
 // @match         *://bitbucket.org/*.nsh*
@@ -29,14 +29,20 @@ const timeBefore = new Date();
 
 // FILTERS
 
-var docs_url = "https://github.com/NSIS-Handbook/Documentation/blob/master/Reference/"
+var ref_url = "https://github.com/NSIS-Handbook/Documentation/blob/master/Reference/";
+var func_url = "https://github.com/NSIS-Handbook/Documentation/blob/master/Functions/";
 
 const filters = [
   
   { // Compiler Commands
-    name: "NSIS Scripting Reference",
-    regexp: /(?:\b)?\!(addincludedir|addplugindir|appendfile|cd|define|delfile|echo|else|endif|error|execute|finalize|getdllversionsystem|ifdef|ifmacrodef|ifmacrondef|ifndef|if|include|insertmacro|macroend|macro|packhdr|searchparse|searchreplace|tempfile|undef|verbose|warning|)\b/g,
-    href: function(match) { return docs_url + match[0] + ".md"; }
+    name: "NSIS Handbook",
+    regexp: /(?:\b)?\!(addincludedir|addplugindir|appendfile|cd|define|delfile|echo|else|endif|error|execute|finalize|getdllversionsystem|ifdef|ifmacrodef|ifmacrondef|ifndef|if|include|insertmacro|macroend|macro|packhdr|searchparse|searchreplace|tempfile|undef|verbose|warnings)\b/g,
+    href: function(match) { return ref_url + match[0] + ".md"; }
+  },
+  { // Callback Functions
+    name: "NSIS Handbook",
+    regexp: /(?:\b)?(onGUIEnd|onGUIInit|onInit|onInstFailed|onInstSuccess|onMouseOverSection|onRebootFailed|onSelChange|onUserAbort|onVerifyInstDir|un\.onGUIEnd|un\.onGUIInit|un\.onInit|un\.onRebootFailed|un\.onSelChange|un\.onUninstFailed|un\.onUninstSuccess|un\.onUserAbort)\b/g,
+    href: function(match) { return func_url + match[0] + ".md"; }
   },
   {  // NSIS Plugins
     name: "NSIS Wiki",
@@ -44,14 +50,14 @@ const filters = [
     href: function(match) { return "http://nsis.sourceforge.net/mediawiki/index.php?title=Special:Search&search=" + match[1] + "+plugin"; }
   },
   { // NSIS Commands
-    name: "NSIS Scripting Reference",
+    name: "NSIS Handbook",
     regexp: /\b(Abort|AddBrandingImage|AddSize|AllowRootDirInstall|AllowSkipFiles|AutoCloseWindow|BGFont|BGGradient|BrandingText|BringToFront|Call|CallInstDLL|Caption|ChangeUI|CheckBitmap|ClearErrors|CompletedText|ComponentText|CopyFiles|CRCCheck|CreateDirectory|CreateFont|CreateShortCut|Delete|DeleteINISec|DeleteINIStr|DeleteRegKey|DeleteRegValue|DetailPrint|DetailsButtonText|DirText|DirVar|DirVerify|EnableWindow|EnumRegKey|EnumRegValue|Exch|Exec|ExecShell|ExecWait|ExpandEnvStrings|File|FileBufSize|FileClose|FileErrorText|FileOpen|FileRead|FileReadByte|FileReadUTF16LE|FileReadWord|FileSeek|FileWrite|FileWriteByte|FileWriteUTF16LE|FileWriteWord|FindClose|FindFirst|FindNext|FindWindow|FlushINI|GetCurInstType|GetCurrentAddress|GetDlgItem|GetDLLVersion|GetDLLVersionLocal|GetErrorLevel|GetFileTime|GetFileTimeLocal|GetFullPathName|GetFunctionAddress|GetInstDirError|GetLabelAddress|GetTempFileName|Goto|HideWindow|Icon|IfAbort|IfErrors|IfFileExists|IfRebootFlag|IfSilent|InitPluginsDir|InstallButtonText|InstallColors|InstallDir|InstallDirRegKey|InstProgressFlags|InstType|InstTypeGetText|InstTypeSetText|IntCmp|IntCmpU|IntFmt|IntOp|IsWindow|LangString|LicenseBkColor|LicenseData|LicenseForceSelection|LicenseLangString|LicenseText|LoadLanguageFile|LockWindow|LogSet|LogText|ManifestDPIAware|ManifestSupportedOS|MessageBox|MiscButtonText|Name|Nop|OutFile|Page|Page|PageCallbacks|Pop|Push|Quit|ReadEnvStr|ReadINIStr|ReadRegDWORD|ReadRegStr|Reboot|RegDLL|Rename|RequestExecutionLevel|ReserveFile|Return|RMDir|SearchPath|SectionGetFlags|SectionGetInstTypes|SectionGetSize|SectionGetText|SectionIn|SectionSetFlags|SectionSetInstTypes|SectionSetSize|SectionSetText|SendMessage|SetAutoClose|SetBrandingImage|SetCompress|SetCompressor|SetCompressorDictSize|SetCtlColors|SetCurInstType|SetDatablockOptimize|SetDateSave|SetDetailsPrint|SetDetailsView|SetErrorLevel|SetErrors|SetFileAttributes|SetFont|SetOutPath|SetOverwrite|SetPluginUnload|SetRebootFlag|SetRegView|SetShellVarContext|SetSilent|ShowInstDetails|ShowUninstDetails|ShowWindow|SilentInstall|SilentUnInstall|Sleep|SpaceTexts|StrCmp|StrCmpS|StrCpy|StrLen|SubCaption|Unicode|UninstallButtonText|UninstallCaption|UninstallIcon|UninstallSubCaption|UninstallText|UninstPage|UninstPage|UnRegDLL|Var|VIAddVersionKey|VIFileVersion|VIProductVersion|WindowIcon|WriteINIStr|WriteRegBin|WriteRegDWORD|WriteRegExpandStr|WriteRegStr|WriteUninstaller|XPStyle)\b/g,
-    href: function(match) { return docs_url + match[1] + ".md"; }
+    href: function(match) { return ref_url + match[1] + ".md"; }
   },
   { // NSIS Sections & Functions
-    name: "NSIS Scripting Reference",
+    name: "NSIS Handbook",
     regexp: /\b(SectionGroupEnd|SectionGroup|FunctionEnd|Function|SectionEnd|Section|SubSectionEnd|SubSection|PageExEnd|PageEx)\b/g,
-    href: function(match) { return docs_url + match[1] + ".md"; }
+    href: function(match) { return ref_url + match[1] + ".md"; }
   },
 ];
 
