@@ -19,8 +19,18 @@ GreaseMonkey will automatically perform an upgrade once a new version is availab
 
 ### Chrome
 
-1. Open the extensions window from the tool menu
-2. Drag `NSIS-Linker.user.js` to the window
+1. Download `NSIS-Linker.user.js`
+2. Open the extensions window from the tool menu
+3. Drag the downloaded file to the extensions window
+
+Unfortunately, the script isn't as reliable as in Firefox. If no links are created at all, please try reloading the page.
+
+### Opera
+
+1. Open the Preferences, go to Advanced > Content > JavaScript Options and specify a User JavaScript folder
+2. Download `NSIS-Linker.user.js` to that folder
+
+If you run into troubles, you can also try this [alternative method](http://www.howtocreate.co.uk/operaStuff/userJavaScript.html#compatibility). As future versions of Opera will be using Google's Blink engine, compatibility with this user script will like improve.
 
 ## Credits
 
