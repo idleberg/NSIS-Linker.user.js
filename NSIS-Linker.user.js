@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name          NSIS-Linker.user.js
-// @version       0.2.6
-// @date          2013-06-08
+// @version       0.2.7
+// @date          2013-06-11
 // @namespace     https://github.com/idleberg/NSIS-Linker.user.js/
 // @description   Links NSIS commands found on certain webpages to the scripting reference
 // @downloadURL   https://github.com/idleberg/NSIS-Linker.user.js/raw/master/NSIS-Linker.user.js
@@ -10,6 +10,7 @@
 // @match         *://forums.winamp.com/*
 // @match         *://github.com/*.nsh
 // @match         *://github.com/*.nsi
+// @match         *://github.com/NSIS-Handbook/*
 // @match         *://nsis.sf.net/*
 // @match         *://nsis.sourceforge.net/*
 // @match         *://stackoverflow.com/*
@@ -30,7 +31,15 @@ const timeBefore = new Date();
 // FILTERS
 
 var ref_url = "https://github.com/NSIS-Handbook/Documentation/blob/master/Reference/";
-var func_url = "https://github.com/NSIS-Handbook/Documentation/blob/master/Functions/";
+var functions_url = "https://github.com/NSIS-Handbook/Documentation/blob/master/Functions/";
+var logiclib_url = "https://github.com/NSIS-Handbook/Documentation/blob/master/Includes/LogicLib/";
+var winver_url = "https://github.com/NSIS-Handbook/Documentation/blob/master/Includes/WinVer/";
+var filefunc_url = "https://github.com/NSIS-Handbook/Documentation/blob/master/Includes/FileFunc/";
+var textfunc_url = "https://github.com/NSIS-Handbook/Documentation/blob/master/Includes/TextFunc/";
+var wordfunc_url = "https://github.com/NSIS-Handbook/Documentation/blob/master/Includes/WordFunc/";
+var memento_url = "https://github.com/NSIS-Handbook/Documentation/blob/master/Includes/Memento/";
+var x64_url = "https://github.com/NSIS-Handbook/Documentation/blob/master/Includes/x64x/";
+
 
 const filters = [
   
@@ -41,8 +50,8 @@ const filters = [
   },
   { // Callback Functions
     name: "NSIS Handbook",
-    regexp: /(?:\b)?(onGUIEnd|onGUIInit|onInit|onInstFailed|onInstSuccess|onMouseOverSection|onRebootFailed|onSelChange|onUserAbort|onVerifyInstDir|un\.onGUIEnd|un\.onGUIInit|un\.onInit|un\.onRebootFailed|un\.onSelChange|un\.onUninstFailed|un\.onUninstSuccess|un\.onUserAbort)\b/g,
-    href: function(match) { return func_url + match[0] + ".md"; }
+    regexp: /(?:\b)?(\.onGUIEnd|\.onGUIInit|\.onInit|\.onInstFailed|\.onInstSuccess|\.onMouseOverSection|\.onRebootFailed|\.onSelChange|\.onUserAbort|\.onVerifyInstDir|un\.onGUIEnd|un\.onGUIInit|un\.onInit|un\.onRebootFailed|un\.onSelChange|un\.onUninstFailed|un\.onUninstSuccess|un\.onUserAbort)\b/g,
+    href: function(match) { return functions_url + match[0] + ".md"; }
   },
   {  // NSIS Plugins
     name: "NSIS Wiki",
@@ -58,6 +67,41 @@ const filters = [
     name: "NSIS Handbook",
     regexp: /\b(SectionGroupEnd|SectionGroup|FunctionEnd|Function|SectionEnd|Section|SubSectionEnd|SubSection|PageExEnd|PageEx)\b/g,
     href: function(match) { return ref_url + match[1] + ".md"; }
+  },
+  { // LogicLib
+    name: "NSIS Handbook",
+    regexp: /(?:\$\{)(Abort|AndIf|AndIfNot|Case|Cmd|Do|LoopUntil|DoUntil|Else|ElseIf|ElseIfNot|ElseUnless|EndWhile|Errors|ExitDo|ExitWhile|FileExists|For|ForEach|If|IfCmd|IfNot|IfThen|IfThenNot|Loop|Next|OrIfNot|RebootFlag|SectionIsBold|SectionIsExpanded|SectionIsPartiallySelected|SectionIsReadOnly|SectionIsSectionGroup|SectionIsSectionGroupEnd|SectionIsSelected|Select|Silent|Switch|Unless|While)(?:\})/g,
+    href: function(match) { return logiclib_url + match[1] + ".md"; }
+  },
+  { // WinVer
+    name: "NSIS Handbook",
+    regexp: /(?:\$\{)(AtLeastServicePack|AtLeastWin2000|AtLeastWin2003|AtLeastWin2008|AtLeastWin2008R2|AtLeastWin2012|AtLeastWin7|AtLeastWin8|AtLeastWin95|AtLeastWin98|AtLeastWinME|AtLeastWinNT4|AtLeastWinVista|AtLeastWinXP|AtMostServicePack|AtMostWin2000|AtMostWin2003|AtMostWin2008|AtMostWin2008R2|AtMostWin2012|AtMostWin7|AtMostWin8|AtMostWin95|AtMostWin98|AtMostWinME|AtMostWinNT4|AtMostWinVista|AtMostWinXP|IsNT|IsServer|IsServicePack|IsWin2000|IsWin2003|IsWin2008|IsWin2008R2|IsWin2012|IsWin7|IsWin8|IsWin95|IsWin98|IsWinME|IsWinNT4|IsWinVista|IsWinXP)(?:\})/g,
+    href: function(match) { return winver_url + match[1] + ".md"; }
+  },
+  { // FileFunc
+    name: "NSIS Handbook",
+    regexp: /(?:\$\{)(BannerTrimPath|DirState|DriveSpace|GetBaseName|GetDrives|GetExeName|GetExePath|GetFileAttributes|GetFileExt|GetFileName|GetFileVersion|GetOptions|GetOptionsS|GetParameters|GetParent|GetRoot|GetSize|GetTime|Locate|RefreshShellIcons)(?:\})/g,
+    href: function(match) { return filefunc_url + match[1] + ".md"; }
+  },
+  { // TextFunc
+    name: "NSIS Handbook",
+    regexp: /(?:\$\{)(ConfigRead|ConfigReadS|ConfigWrite|ConfigWriteS|FileJoin|FileReadFromEnd|FileRecode|LineFind|LineRead|LineSum|TextCompare|TextCompareS|TrimNewLines)(?:\})/g,
+    href: function(match) { return textfunc_url + match[1] + ".md"; }
+  },
+  { // WordFunc
+    name: "NSIS Handbook",
+    regexp: /(?:\$\{)(StrFilter|StrFilterS|VersionCompare|WordAdd|WordAddS|WordFind|WordFind2x|WordFind2xS|WordFind3x|WordFind3xS|WordFindS|WordInsert|WordInsertS|WordReplace|WordReplaceS)(?:\})/g,
+    href: function(match) { return wordfunc_url + match[1] + ".md"; }
+  },
+  { // x64
+    name: "NSIS Handbook",
+    regexp: /(?:\$\{)(DisableX64FSRedirection|EnableX64FSRedirection|RunningX64)(?:\})/g,
+    href: function(match) { return x64_url + match[1] + ".md"; }
+  },
+  { // Memento
+    name: "NSIS Handbook",
+    regexp: /(?:\$\{)(MementoSection|MementoSectionEnd|MementoSectionRestore|MementoSectionSave|MementoUnselectedSection)(?:\})/g,
+    href: function(match) { return memento_url + match[1] + ".md"; }
   },
 ];
 
