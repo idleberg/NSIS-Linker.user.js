@@ -1,7 +1,7 @@
 # NSIS-Linker.user.js
 *by Jan T. Sott*
 
-Highlights [NSIS](http://nsis.sourceforge.net) commands in Mozilla Firefox and some other browsers. Supported are all commands in the current stable (v2.46) and alpha versions (3.0a0), plus callback functions, LogicLib and the "useful headers" FileFunc, TextFunc and WordFunc.
+Highlights [NSIS](http://nsis.sourceforge.net) commands in Mozilla Firefox and some other browsers. Supported are all commands in the current stable (v2.46) and alpha versions (3.0a0), plus callback functions, LogicLib, x64 and the "useful headers" FileFunc, TextFunc and WordFunc.
 
 The user scripts triggers on the following websites:
 
@@ -41,5 +41,4 @@ If you run into troubles, you can also try this [alternative method](http://www.
 ## Credits
 
 Original AutoLink script by [Jesse Ruderman](http://www.squarefree.com)
-
 NSIS modification by [Jan T. Sott](http://whyeye.org)
