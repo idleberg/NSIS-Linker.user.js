@@ -1,7 +1,8 @@
 # NSIS-Linker.user.js
 *by Jan T. Sott*
 
-Highlights NSIS commands in Mozilla Firefox and some other browsers. Supported are all commands in the current stable (v2.46) and alpha versions (3.0a0), plus callback functions, LogicLib and the "useful headers" FileFunc, TextFunc and WordFunc.
+Highlights [NSIS](http://nsis.sourceforge.net) commands in Mozilla Firefox and some other browsers. Supported are all commands in the current stable (v2.46) and alpha versions (3.0a0), plus callback functions, LogicLib and the "useful headers" FileFunc, TextFunc and WordFunc.
+
 The user scripts triggers on the following websites:
 
 * Winamp.com forums
@@ -10,7 +11,7 @@ The user scripts triggers on the following websites:
 * NSIS Sourceforge pages
 * Stack Overflow
 
-You can add custom domains from the Greasemonkey settings.
+You can add custom domains from the Greasemonkey settings menu.
 
 ## Installation
 
