@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name          NSIS-Linker.user.js
-// @version       0.2.9
+// @version       0.2.10
 // @date          2013-06-12
 // @namespace     https://github.com/idleberg/NSIS-Linker.user.js/
 // @description   Links NSIS commands found on certain webpages to the scripting reference
@@ -69,11 +69,9 @@ const filters = [
     href: function(match) { return ref_url + match[1] + ".md"; }
   },
   { // LogicLib
-    // name: "NSIS Handbook",
-    name: "NSIS Wiki",
+    name: "NSIS Handbook",
     regexp: /(?:\$\{)(Abort|AndIf|AndIfNot|Case|Cmd|Do|LoopUntil|DoUntil|Else|ElseIf|ElseIfNot|ElseUnless|EndIf|EndWhile|Errors|ExitDo|ExitWhile|FileExists|For|ForEach|If|IfCmd|IfNot|IfThen|IfThenNot|Loop|Next|OrIfNot|RebootFlag|SectionIsBold|SectionIsExpanded|SectionIsPartiallySelected|SectionIsReadOnly|SectionIsSectionGroup|SectionIsSectionGroupEnd|SectionIsSelected|Select|Silent|Switch|Unless|While)(?:\})/g,
-    // href: function(match) { return logiclib_url + match[1] + ".md"; }
-    href: function(match) { return "http://nsis.sourceforge.net/LogicLib"; }
+    href: function(match) { return logiclib_url + match[1] + ".md"; }
   },
   /*
   { // WinVer
