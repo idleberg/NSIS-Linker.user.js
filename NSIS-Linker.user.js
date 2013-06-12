@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name          NSIS-Linker.user.js
-// @version       0.2.10
+// @version       0.2.11
 // @date          2013-06-12
 // @namespace     https://github.com/idleberg/NSIS-Linker.user.js/
 // @description   Links NSIS commands found on certain webpages to the scripting reference
@@ -30,15 +30,15 @@ const timeBefore = new Date();
 
 // FILTERS
 
-var ref_url = "https://github.com/NSIS-Handbook/Documentation/blob/master/Reference/";
-var functions_url = "https://github.com/NSIS-Handbook/Documentation/blob/master/Functions/";
-var logiclib_url = "https://github.com/NSIS-Handbook/Documentation/blob/master/Includes/LogicLib/";
-var winver_url = "https://github.com/NSIS-Handbook/Documentation/blob/master/Includes/WinVer/";
-var filefunc_url = "https://github.com/NSIS-Handbook/Documentation/blob/master/Includes/FileFunc/";
-var textfunc_url = "https://github.com/NSIS-Handbook/Documentation/blob/master/Includes/TextFunc/";
-var wordfunc_url = "https://github.com/NSIS-Handbook/Documentation/blob/master/Includes/WordFunc/";
-var memento_url = "https://github.com/NSIS-Handbook/Documentation/blob/master/Includes/Memento/";
-var x64_url = "https://github.com/NSIS-Handbook/Documentation/blob/master/Includes/x64x/";
+var ref_url = "http://github.com/NSIS-Handbook/Documentation/blob/master/Reference/";
+var functions_url = "http://github.com/NSIS-Handbook/Documentation/blob/master/Functions/";
+var logiclib_url = "http://github.com/NSIS-Handbook/Documentation/blob/master/Includes/LogicLib/";
+var winver_url = "http://github.com/NSIS-Handbook/Documentation/blob/master/Includes/WinVer/";
+var filefunc_url = "http://github.com/NSIS-Handbook/Documentation/blob/master/Includes/FileFunc/";
+var textfunc_url = "http://github.com/NSIS-Handbook/Documentation/blob/master/Includes/TextFunc/";
+var wordfunc_url = "http://github.com/NSIS-Handbook/Documentation/blob/master/Includes/WordFunc/";
+var memento_url = "http://github.com/NSIS-Handbook/Documentation/blob/master/Includes/Memento/";
+var x64_url = "http://github.com/NSIS-Handbook/Documentation/blob/master/Includes/x64x/";
 
 
 const filters = [
@@ -101,14 +101,12 @@ const filters = [
     regexp: /(?:\$\{)(DisableX64FSRedirection|EnableX64FSRedirection|RunningX64)(?:\})/g,
     href: function(match) { return x64_url + match[1] + ".md"; }
   },
-  /*
   { // Memento
     name: "NSIS Handbook",
     regexp: /(?:\$\{)(MementoSection|MementoSectionEnd|MementoSectionRestore|MementoSectionSave|MementoUnselectedSection)(?:\})/g,
     href: function(match) { return memento_url + match[1] + ".md"; }
 
   },
-  */
 ];
 
 
