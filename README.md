@@ -1,7 +1,7 @@
 # NSIS-Linker.user.js
 *by Jan T. Sott*
 
-Highlights [NSIS](http://nsis.sourceforge.net) commands in Mozilla Firefox and some other browsers. Supported are all commands in the current stable (v2.46) and alpha versions (3.0a0), plus callback functions, LogicLib, Memento, x64 and the "useful headers" FileFunc, TextFunc and WordFunc.
+Highlights [NSIS](http://nsis.sourceforge.net) commands in Mozilla Firefox and some other browsers. Supported are all commands in the current stable (v2.46) and alpha versions (3.0a0), plus callback functions, LogicLib, Memento, WinVer, x64 and the "useful headers" FileFunc, TextFunc and WordFunc.
 
 The user scripts triggers on the following websites:
 

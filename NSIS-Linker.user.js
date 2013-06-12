@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name          NSIS-Linker.user.js
-// @version       0.2.11
+// @version       0.2.12
 // @date          2013-06-12
 // @namespace     https://github.com/idleberg/NSIS-Linker.user.js/
 // @description   Links NSIS commands found on certain webpages to the scripting reference
@@ -55,7 +55,7 @@ const filters = [
   },
   {  // NSIS Plugins
     name: "NSIS Wiki",
-    regexp: /\b([a-zA-Z0-9_]+)::([a-zA-Z0-9_]+)\b/g,
+    regexp: /\b([a-z0-9_]+)::(?:[a-z0-9_]+)\b/gi,
     href: function(match) { return "http://www.google.com/cse?q=" + match[1] + "+plugin+site%3Ansis.sourceforge.net&btnI"; }
   },
   { // NSIS Commands
@@ -73,14 +73,11 @@ const filters = [
     regexp: /(?:\$\{)(Abort|AndIf|AndIfNot|Case|Cmd|Do|LoopUntil|DoUntil|Else|ElseIf|ElseIfNot|ElseUnless|EndIf|EndWhile|Errors|ExitDo|ExitWhile|FileExists|For|ForEach|If|IfCmd|IfNot|IfThen|IfThenNot|Loop|Next|OrIfNot|RebootFlag|SectionIsBold|SectionIsExpanded|SectionIsPartiallySelected|SectionIsReadOnly|SectionIsSectionGroup|SectionIsSectionGroupEnd|SectionIsSelected|Select|Silent|Switch|Unless|While)(?:\})/g,
     href: function(match) { return logiclib_url + match[1] + ".md"; }
   },
-  /*
   { // WinVer
     name: "NSIS Handbook",
     regexp: /(?:\$\{)(AtLeastServicePack|AtLeastWin2000|AtLeastWin2003|AtLeastWin2008|AtLeastWin2008R2|AtLeastWin2012|AtLeastWin7|AtLeastWin8|AtLeastWin95|AtLeastWin98|AtLeastWinME|AtLeastWinNT4|AtLeastWinVista|AtLeastWinXP|AtMostServicePack|AtMostWin2000|AtMostWin2003|AtMostWin2008|AtMostWin2008R2|AtMostWin2012|AtMostWin7|AtMostWin8|AtMostWin95|AtMostWin98|AtMostWinME|AtMostWinNT4|AtMostWinVista|AtMostWinXP|IsNT|IsServer|IsServicePack|IsWin2000|IsWin2003|IsWin2008|IsWin2008R2|IsWin2012|IsWin7|IsWin8|IsWin95|IsWin98|IsWinME|IsWinNT4|IsWinVista|IsWinXP)(?:\})/g,
-    //href: function(match) { return winver_url + match[1] + ".md"; }
-    href: function(match) { return "http://nsis.sourceforge.net/Get_Windows_version"; }
+    href: function(match) { return winver_url + match[1] + ".md"; }
   },
-  */
   { // FileFunc
     name: "NSIS Handbook",
     regexp: /(?:\$\{)(BannerTrimPath|DirState|DriveSpace|GetBaseName|GetDrives|GetExeName|GetExePath|GetFileAttributes|GetFileExt|GetFileName|GetFileVersion|GetOptions|GetOptionsS|GetParameters|GetParent|GetRoot|GetSize|GetTime|Locate|RefreshShellIcons)(?:\})/g,
