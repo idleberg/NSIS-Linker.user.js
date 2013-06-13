@@ -41,3 +41,7 @@ If you run into troubles, you can also try this [alternative method](http://www.
 ## Credits
 
 Original AutoLink script by [Jesse Ruderman](http://www.squarefree.com), NSIS modification by [Jan T. Sott](http://whyeye.org)
+
+## Donate
+
+[<img src="https://raw.github.com/balupton/flattr-buttons/master/badge-89x18.gif" />](https://flattr.com/submit/auto?user_id=idleberg&url=https://github.com/idleberg/NSIS-Linker.user.js/&title=NSIS-Linker.user.js&description=A%20Greasemonkey%20user-script%20that%20links%20NSIS%20commands%20found%20on%20websites%20to%20the%20online%20scripting%20reference&language=en_GB&tags=nsis,javascript,greasemonkey,firefox,user-script,highlighter,auto-link&hidden=0&category=software)
