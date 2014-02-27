@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name          NSIS-Linker.user.js
-// @version       0.2.14
+// @version       0.2.15
 // @date          2014-02-27
 // @namespace     https://github.com/idleberg/NSIS-Linker.user.js/
 // @description   Links NSIS commands found on certain webpages to the scripting reference
@@ -53,7 +53,7 @@ const filters = [
   },
   { // Callback Functions
     name: "NSIS Dev",
-    regexp: /(?:\b)?((?:\.)onGUIEnd|(?:\.)onGUIInit|(?:\.)onInit|(?:\.)onInstFailed|(?:\.)onInstSuccess|(?:\.)onMouseOverSection|(?:\.)onRebootFailed|(?:\.)onSelChange|(?:\.)onUserAbort|(?:\.)onVerifyInstDir|un\.onGUIEnd|un\.onGUIInit|un\.onInit|un\.onRebootFailed|un\.onSelChange|un\.onUninstFailed|un\.onUninstSuccess|un\.onUserAbort)\b/g,
+    regexp: /(?:\b)?((?!\.)onGUIEnd|(?!\.)onGUIInit|(?!\.)onInit|(?!\.)onInstFailed|(?!\.)onInstSuccess|(?!\.)onMouseOverSection|(?!\.)onRebootFailed|(?!\.)onSelChange|(?!\.)onUserAbort|(?:\.)onVerifyInstDir|un\.onGUIEnd|un\.onGUIInit|un\.onInit|un\.onRebootFailed|un\.onSelChange|un\.onUninstFailed|un\.onUninstSuccess|un\.onUserAbort)\b/g,
     href: function(match) { return functions_url + match[0] + ".md"; }
   },
   {  // NSIS Plugins
