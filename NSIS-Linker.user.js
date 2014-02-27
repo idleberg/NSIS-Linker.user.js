@@ -11,6 +11,8 @@
 // @match         *://github.com/*.nsh
 // @match         *://github.com/*.nsi
 // @match         *://github.com/NSIS-Dev/*
+// @match         *://github.com/NSIS-Handbook/*
+// @match         *://github.com/NSIS-Packages/*
 // @match         *://nsis.sf.net/*
 // @match         *://nsis.sourceforge.net/*
 // @match         *://stackoverflow.com/*
