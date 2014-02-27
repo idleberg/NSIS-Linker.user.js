@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name          NSIS-Linker.user.js
-// @version       0.2.13
+// @version       0.2.14
 // @date          2014-02-27
 // @namespace     https://github.com/idleberg/NSIS-Linker.user.js/
 // @description   Links NSIS commands found on certain webpages to the scripting reference
