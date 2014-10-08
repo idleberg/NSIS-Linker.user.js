@@ -48,7 +48,7 @@ const filters = [
   
   { // Compiler Commands
     name: "NSIS Dev",
-    regexp: /(?:\b)?\!(addincludedir|addplugindir|appendfile|cd|define|delfile|echo|else|endif|error|execute|finalize|getdllversionsystem|ifdef|ifmacrodef|ifmacrondef|ifndef|if|include|insertmacro|macroend|macro|packhdr|searchparse|searchreplace|tempfile|undef|verbose|warnings)\b/g,
+    regexp: /(?:\b)?\!(addincludedir|addplugindir|appendfile|cd|define|delfile|echo|else|endif|error|execute|finalize|getdllversionsystem|ifdef|ifmacrodef|ifmacrondef|ifndef|if|include|insertmacro|macroend|macro|makensis|packhdr|searchparse|searchreplace|tempfile|undef|verbose|warnings)\b/g,
     href: function(match) { return ref_url + match[0] + ".html"; }
   },
   { // Callback Functions
